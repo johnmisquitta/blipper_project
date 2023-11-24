@@ -32,7 +32,6 @@
 #         st.write(outputs)
 #         st.success("Audio processed successfully!")
 #############################working############################
-
 import streamlit as st
 #from whisper_jax import FlaxWhisperPipline
 #import jax.numpy as jnp
@@ -176,6 +175,9 @@ def main():
         temp_file_path = os.path.join(temp_dir.name, audio_file.name)
         with open(temp_file_path, 'wb') as temp_file:
             temp_file.write(audio_file.read())
+
+
+        
 
         # Process the file using its path
         #st.audio(temp_file_path, format='audio/*')
