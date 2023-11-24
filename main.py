@@ -25,7 +25,7 @@ if uploaded_file is not None:
         st.audio(uploaded_file)
         audio_data, sample_rate = process_audio(uploaded_file)
         st.success("Audio uploaded successfully!")
-        pipeline = FlaxWhisperPipline("openai/whisper-medium", dtype=jnp.bfloat16, batch_size=16)  # , device='cuda:0')
+        pipeline = FlaxWhisperPipline("openai/whisper-base", dtype=jnp.bfloat16, batch_size=16)  # , device='cuda:0')
 
         # Transcribe and return timestamps
         outputs = pipeline(audio_data, task="transcribe", return_timestamps=True)
