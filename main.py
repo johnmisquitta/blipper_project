@@ -11,7 +11,7 @@ st.audio(uploaded_file, format="audio/wav")
 st.write("<hr>", unsafe_allow_html=True)
 
 # instantiate pipeline
-pipeline = FlaxWhisperPipline("openai/whisper-base")
+pipeline = FlaxWhisperPipline("openai/whisper-tiny")
 
 # JIT compile the forward call - slow, but we only do once
 # used cached function thereafter - super fast!!
