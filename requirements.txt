@@ -1,5 +1,5 @@
 git+https://github.com/sanchit-gandhi/whisper-jax.git
 cached-property==1.5.2
 soundfile==0.12.1
-ffmpeg-python
+ffmpeg-python==0.2.0
 
