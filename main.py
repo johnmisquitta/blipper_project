@@ -173,7 +173,7 @@ def convert_speaker_name(speaker_name):
         else:
             return speaker_name,"yellow"
         
-openai.api_key = "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"
+openai.api_key = "sk-"
 
 def main():
     st.header("Upload A File")
