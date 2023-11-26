@@ -173,7 +173,7 @@ def convert_speaker_name(speaker_name):
         else:
             return speaker_name,"yellow"
         
-openai.api_key = "sk-"
+openai.api_key = "api key"
 
 def main():
     st.header("Upload A File")
@@ -248,7 +248,6 @@ def main():
         # add min/max number of speakers if known
         diarize_segments = diarize_model(audio)
 
-        st.write(transcribe_result["segments"]) # before alignment
 
         st.header("Diarization + Transcript")
 
@@ -285,6 +284,7 @@ def main():
 
         # Get the unique list of speakers
         speakers = df['speaker'].unique()
+        st.write(len(speakers))
         speaker_info = {}
 
 # Populate the dictionary with speaker names and text
@@ -302,12 +302,12 @@ def main():
 
         # Print the variables
         #for i in range(1, len(speakers) + 1):
-
-        st.write(len(speaker_info))
         col1, col2 = st.columns(2)
 
+
+
         with col1:
-            if speaker_info[f'speaker{1}']:
+            if len(speakers)>=1:
 
                 st.header(speaker_info[f'speaker{1}'])
                 #st.write("This is content for column 2.")
@@ -330,10 +330,12 @@ def main():
                         #st.markdown(f"**Recap:**\n{recap}")
                     else:
                         st.warning("Please enter a prompt.")
+            else:
+                st.warning("2nd speaker not found")
 
 
         with col2:
-            if speaker_info[f'speaker{2}']:
+            if len(speakers)>=2:
                 st.header(speaker_info[f'speaker{2}'])
                 #st.write("This is content for column 2.")
 
@@ -359,6 +361,7 @@ def main():
                         #st.markdown(f"**Recap:**\n{recap}")
                     else:
                         st.warning("Please enter a prompt.")
+            st.warning("2nd speaker not found")
 
 
 
