@@ -303,57 +303,60 @@ def main():
         # Print the variables
         #for i in range(1, len(speakers) + 1):
         col1, col2 = st.columns(2)
+
         with col1:
-            st.header(speaker_info[f'speaker{1}'])
-            #st.write("This is content for column 2.")
-            #st.write(f"Speaker {1}: {speaker_info[f'speaker{1}']}")
-            st.write(f"Text {1}: {speaker_info[f'text{1}']}")
-            st.header("GPT Prompt")
-            quaries="perform these operations \n summary \n check mistakes \n query 3 \n query 4\n"
-            text=speaker_info[f'text{1}']
-            quaries_plus_text=quaries + ' '.join(text)
+            if speaker_info[f'speaker{1}']:
 
-        
-            prompt = st.text_area("Prompts:", quaries_plus_text)
+                st.header(speaker_info[f'speaker{1}'])
+                #st.write("This is content for column 2.")
+                #st.write(f"Speaker {1}: {speaker_info[f'speaker{1}']}")
+                st.write(f"Text {1}: {speaker_info[f'text{1}']}")
+                st.header("GPT Prompt")
+                quaries="perform these operations \n summary \n check mistakes \n query 3 \n query 4\n"
+                text=speaker_info[f'text{1}']
+                quaries_plus_text=quaries + ' '.join(text)
 
-            # Button to generate response
-            if st.button("Submit 1"):
-                if prompt:
-                    st.warning("add open ai Api to generate response.")
+            
+                prompt = st.text_area("Prompts:", quaries_plus_text)
 
-                    #recap = generate_response(prompt)
-                    #st.markdown(f"**Recap:**\n{recap}")
-                else:
-                    st.warning("Please enter a prompt.")
+                # Button to generate response
+                if st.button("Submit 1"):
+                    if prompt:
+                        st.warning("add open ai Api to generate response.")
+
+                        #recap = generate_response(prompt)
+                        #st.markdown(f"**Recap:**\n{recap}")
+                    else:
+                        st.warning("Please enter a prompt.")
 
 
         with col2:
-            st.header(speaker_info[f'speaker{2}'])
-            #st.write("This is content for column 2.")
+            if speaker_info[f'speaker{2}']:
+                st.header(speaker_info[f'speaker{2}'])
+                #st.write("This is content for column 2.")
 
-            #st.write(f"Speaker {2}: {speaker_info[f'speaker{2}']}")
-            st.write(f"Text {2}: {speaker_info[f'text{2}']}")
-            st.header("GPT Prompt")
-
-
-            quaries="perform these operations \n summary \n check mistakes \n query 3 \n query 4\n"
-            text=speaker_info[f'text{2}']
-            quaries_plus_text=quaries + ' '.join(text)
+                #st.write(f"Speaker {2}: {speaker_info[f'speaker{2}']}")
+                st.write(f"Text {2}: {speaker_info[f'text{2}']}")
+                st.header("GPT Prompt")
 
 
-        
-            prompt = st.text_area("Prompts:", quaries_plus_text)
+                quaries="perform these operations \n summary \n check mistakes \n query 3 \n query 4\n"
+                text=speaker_info[f'text{2}']
+                quaries_plus_text=quaries + ' '.join(text)
 
-            # Button to generate response
-            if st.button("Submit 2"):
-                if prompt:
-                    st.warning("add open ai Api to generate response.")
 
-                    recap = generate_response(prompt)
-                    #st.markdown(f"**Recap:**\n{recap}")
-                else:
-                    st.warning("Please enter a prompt.")
+            
+                prompt = st.text_area("Prompts:", quaries_plus_text)
 
+                # Button to generate response
+                if st.button("Submit 2"):
+                    if prompt:
+                        st.warning("add open ai Api to generate response.")
+
+                        recap = generate_response(prompt)
+                        #st.markdown(f"**Recap:**\n{recap}")
+                    else:
+                        st.warning("Please enter a prompt.")
 
 
 
