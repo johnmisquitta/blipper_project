@@ -305,7 +305,7 @@ def main():
         col1, col2 = st.columns(2)
 
         with col1:
-            if speaker_info[f'speaker{1}']:
+            if speaker_info[1]:
 
                 st.header(speaker_info[f'speaker{1}'])
                 #st.write("This is content for column 2.")
@@ -331,7 +331,7 @@ def main():
 
 
         with col2:
-            if speaker_info[f'speaker{2}']:
+            if speaker_info[2]:
                 st.header(speaker_info[f'speaker{2}'])
                 #st.write("This is content for column 2.")
 
