@@ -132,47 +132,9 @@ def generate_response(prompt):
     )
     return response.choices[0].text.strip()
 
-def get_transcription_at_timestamp(timestamp, transcription_dict):
-    for item in transcription_dict:
-        if item['start'] <= timestamp <= item['end']:
-            #print(item['speaker'])
-            return item
-    return None
-
-def load_transcription_and_highlight(timestamp, transcription_dict):
-    selected_transcription = get_transcription_at_timestamp(timestamp, transcription_dict)
-
-    if selected_transcription:
-
-        words_at_timestamp = [word_info['word'] for word_info in selected_transcription['words']
-                               if word_info['start'] <= timestamp <= word_info['end']]
-        highlighted_transcript = " ".join([f'<span style="background-color:  #aaffaa;">{word_info["word"]}</span>' if word_info["word"] in words_at_timestamp else (word_info["word"])
-                                           for word_info in selected_transcription['words']])
-        
-        speaker=selected_transcription["speaker"]
-        #print(speaker)
-        #result_container.markdown(highlighted_transcript, unsafe_allow_html=True)
-        #st.markdown(highlighted_transcript, unsafe_allow_html=True)
-        return speaker,highlighted_transcript
 
 
-    # else:
-    #     st.warning("No transcription found for the given timestamp.")
 
-def convert_speaker_name(speaker_name):
-        my_list = ["#FFE15D","#FD841F", "blue", "green", "Purple"]
-
-        if speaker_name.startswith("SPEAKER_"):
-            try:
-                index = int(speaker_name.split("_")[1])
-                changed_speaker_name=f"Speaker {index + 1}"
-                colour=my_list[index]
-                return changed_speaker_name,colour
-            except ValueError:
-                return speaker_name,"yellow"
-        else:
-            return speaker_name,"yellow"
-        
 openai.api_key = "api key"
 
 def main():
@@ -287,7 +249,6 @@ def main():
         st.write(len(speakers))
         speaker_info = {}
 
-# Populate the dictionary with speaker names and text
         for i, speaker in enumerate(speakers, start=1):
             # Get the group corresponding to the current speaker
             group = grouped_df.get_group(speaker)
@@ -369,13 +330,10 @@ def main():
         # for speaker in speakers:
         #     col_name, col_text = st.columns(2)  # 2 columns for each speaker
 
-        #     # Display speaker name in the first column
         #     col_name.write(f"{speaker}")
 
-        #     # Get the group corresponding to the current speaker
         #     group = grouped_df.get_group(speaker)
 
-        #     # Display speaker text in the second column
         #     speaker_text = "\n".join(group['text'])
         #     col_text.write(speaker_text)
 
@@ -400,7 +358,6 @@ def main():
         # delete model if low on GPU resources
         # import gc; gc.collect(); torch.cuda.empty_cache(); del model
 
-    #     # 2. Align whisper output
     #     model_a, metadata = whisperx.load_align_model(language_code=transcribe_result["language"],device=device)
     #     result = whisperx.align(transcribe_result["segments"], model_a, metadata, audio, device, return_char_alignments=False)
     #     st.write("allign")
@@ -412,7 +369,6 @@ def main():
     #     # delete model if low on GPU resources
     #     # import gc; gc.collect(); torch.cuda.empty_cache(); del model_a
 
-    #     # 3. Assign speaker labels
     #     diarize_model = whisperx.DiarizationPipeline(use_auth_token="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")#, device=device)
 
     #     # add min/max number of speakers if known
@@ -436,7 +392,6 @@ def main():
 
 
 
-    # # Replace with the actual path to your audio file
     # # audio_file = "converted_audio.wav"
     
 
