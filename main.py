@@ -303,7 +303,7 @@ def main():
         # Print the variables
         #for i in range(1, len(speakers) + 1):
 
-        st.write(speaker_info)
+        st.write(len(speaker_info))
         col1, col2 = st.columns(2)
 
         with col1:
